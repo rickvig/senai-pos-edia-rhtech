@@ -128,3 +128,48 @@ ALTER TABLE "cargo" ADD CONSTRAINT "cargo_fk0" FOREIGN KEY ("id_departamento") R
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------
+-- GERADO PELO DJANGO 
+-------------------------------------------------------------------------
+
+
+
+BEGIN;
+--
+-- Create model Departamento
+--
+CREATE TABLE "rh_departamento" ("id" bigserial NOT NULL PRIMARY KEY, "nome" varchar(255) NOT NULL);
+--
+-- Create model Colaborador
+--
+CREATE TABLE "rh_colaborador" ("id" bigserial NOT NULL PRIMARY KEY, "nome" varchar(255) NOT NULL, "salario" numeric(10, 2) NOT NULL, "departamento_id" bigint NOT NULL);
+ALTER TABLE "rh_colaborador" ADD CONSTRAINT "rh_colaborador_departamento_id_79fa9dd2_fk_rh_departamento_id" FOREIGN KEY ("departamento_id") REFERENCES "rh_departamento" ("id") DEFERRABLE INITIALLY DEFERRED;
+CREATE INDEX "rh_colaborador_departamento_id_79fa9dd2" ON "rh_colaborador" ("departamento_id");
+
+COMMIT;
+
+
+
+
+

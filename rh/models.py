@@ -30,6 +30,7 @@ class ItemNotaFiscal(models.Model):
 
 class Departamento(models.Model):
     nome = models.CharField(max_length=255)
+    empresa = models.ForeignKey(Empresa, on_delete=models.DO_NOTHING)
     
     def __str__(self):
         return self.nome
@@ -42,13 +43,12 @@ class Cargo(models.Model):
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.nome
+        return f'{self.nome} - Dep: {self.departamento.nome}'
 
 
 class Colaborador(models.Model):
     nome = models.CharField(max_length=255)
     salario = models.DecimalField(decimal_places=2, max_digits=10)
-    departamento = models.ForeignKey(Departamento, on_delete=models.PROTECT)
     cargo = models.ForeignKey(Cargo, on_delete=models.PROTECT, default=1)
     
     def __str__(self):
@@ -58,10 +58,10 @@ class Colaborador(models.Model):
 class FolhaPagamento(models.Model):
     data_lancamento = models.DateField()
     horas_extras = models.DecimalField(decimal_places=2, max_digits=10)
-    saldo_total = models.DecimalField(decimal_places=2, max_digits=10)
+    saldo_total = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True)
     
     colaborador = models.ForeignKey(Colaborador, on_delete=models.DO_NOTHING)
-
+ 
 
 class Ponto(models.Model):
     data_entrada = models.DateTimeField()

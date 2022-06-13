@@ -61,4 +61,16 @@
                         'handlers': ['console'],
                         }
                 }
-        }
+        }pip install pymongo
+
+
+
+
+# MongoDb
+
+https://www.mongodb.com/blog/post/getting-started-with-python-and-mongodb
+
+pip install pymongo
+pip install "pymongo[srv]"
+
+https://pymongo.readthedocs.io/en/stable/

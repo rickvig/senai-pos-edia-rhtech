@@ -70,7 +70,14 @@
 
 https://www.mongodb.com/blog/post/getting-started-with-python-and-mongodb
 
-pip install pymongo
-pip install "pymongo[srv]"
+        pip install pymongo
+        pip install "pymongo[srv]"
 
 https://pymongo.readthedocs.io/en/stable/
+
+
+# Redis
+
+https://github.com/antirez/redis-rb-cluster
+
+        pip install redis-py-cluster

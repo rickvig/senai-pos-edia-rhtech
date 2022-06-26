@@ -32,25 +32,46 @@
       <section class="jumbotron text-center">
         <div class="container">
            
-            <button class="btn btn-primary"  onclick="registra_ponto();">
-                Registra
+            <button class="btn btn-success"  onclick="registra_ponto_mongo();">
+                Registra Ponto no MongoDB
             </button>
 
+            <button class="btn btn-danger"  onclick="registra_ponto_redis();">
+                Registra Ponto no Redis
+            </button>
+
+            <ul class="lista_ponto"></ul>
+
             <script>
-                function registra_ponto() {
-                  $.ajax({
-                    url: "ponto",
-                    type: "GET",
-                    dataType: 'json',
-                    success: (data) => {
-                      console.log(data)
-                      alert(data.response)
-                    },
-                    error: (err) => {
-                      alert(err.response)
-                    },
-                  });
-                }
+              function registra_ponto_mongo() {
+                $.ajax({
+                  url: "ponto_mongo",
+                  type: "GET",
+                  dataType: 'json',
+                  success: (data) => {
+                    console.log(data)
+                    alert(data.response)
+                  },
+                  error: (err) => {
+                    alert(err.response)
+                  },
+                });
+              }
+
+              function registra_ponto_redis() {
+                $.ajax({
+                  url: "ponto_redis",
+                  type: "GET",
+                  dataType: 'json',
+                  success: (data) => {
+                    console.log(data)
+                    $('#lista_ponto').append(`<li class="list-group-item">${data.response}</li>`)
+                  },
+                  error: (err) => {
+                    alert(err.response)
+                  },
+                });
+              }
             </script>
           </p>
         </div>

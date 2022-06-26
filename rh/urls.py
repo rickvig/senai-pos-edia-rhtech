@@ -4,7 +4,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('ponto', views.ponto, name='ponto'),
+    path('ponto_mongo', views.ponto_mongo),
+    path('ponto_redis', views.ponto_redis),
 ]
 
 
